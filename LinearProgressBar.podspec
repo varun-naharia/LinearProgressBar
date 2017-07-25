@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
     }
     s.source            = {
         :git => "https://github.com/varun-naharia/LinearProgressBar.git",
-        :tag => "v2.0.0"
+        :tag => "2.0.0"
     }
     s.source_files      = "LinearProgressBar/LinearProgressBar.swift"
     s.frameworks = "UIKit"
