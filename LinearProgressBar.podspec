@@ -1,19 +1,19 @@
 Pod::Spec.new do |s|
 
     s.name              = "LinearProgressBar"
-    s.version           = "1.0.0"
+    s.version           = "2.0.0"
     s.summary           = "Linear Progress Bar for Swift"
-    s.homepage          = "https://github.com/PhilippeBoisney/LinearProgressBar"
+    s.homepage          = "https://github.com/varun-naharia/LinearProgressBar"
     s.author            = {
-        "BOISNEY Philippe" => "phil.boisney(@)gmail.com"
+        "Varun Naharia" => "varun.naharia@gmail.com"
     }
     s.license           = {
         :type => 'MIT',
         :file => 'LICENSE'
     }
     s.source            = {
-        :git => "https://github.com/PhilippeBoisney/LinearProgressBar.git",
-        :tag => "v1.0.0"
+        :git => "https://github.com/varun-naharia/LinearProgressBar.git",
+        :tag => "v2.0.0"
     }
     s.source_files      = "LinearProgressBar/LinearProgressBar.swift"
     s.frameworks = "UIKit"

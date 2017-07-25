@@ -23,12 +23,12 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func startAnimation(sender: AnyObject) {
+    @IBAction func startAnimation(_ sender: AnyObject) {
         self.linearBar.startAnimation()
     }
     
     
-    @IBAction func stopAnimation(sender: AnyObject) {
+    @IBAction func stopAnimation(_ sender: AnyObject) {
         self.linearBar.stopAnimation()
     }
 

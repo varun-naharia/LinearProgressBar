@@ -10,33 +10,33 @@
 
 import UIKit
 
-public class LinearProgressBar: UIView {
+open class LinearProgressBar: UIView {
     
     //FOR DATA
-    private var screenSize: CGRect = UIScreen.mainScreen().bounds
+    fileprivate var screenSize: CGRect = UIScreen.main.bounds
     
     
-    private var isAnimationRunning = false
+    fileprivate var isAnimationRunning = false
     
     //FOR DESIGN
-    private var progressBarIndicator: UIView!
+    fileprivate var progressBarIndicator: UIView!
     
     //PUBLIC VARS
-    public var backgroundProgressBarColor: UIColor = UIColor(red:0.73, green:0.87, blue:0.98, alpha:1.0)
-    public var progressBarColor: UIColor = UIColor(red:0.12, green:0.53, blue:0.90, alpha:1.0)
-    public var heightForLinearBar: CGFloat = 5
-    public var widthForLinearBar: CGFloat = 0
+    open var backgroundProgressBarColor: UIColor = UIColor(red:0.73, green:0.87, blue:0.98, alpha:1.0)
+    open var progressBarColor: UIColor = UIColor(red:0.12, green:0.53, blue:0.90, alpha:1.0)
+    open var heightForLinearBar: CGFloat = 5
+    open var widthForLinearBar: CGFloat = 0
     
     public init () {
-        super.init(frame: CGRectMake(0, 20, screenSize.width, 0))
-        self.progressBarIndicator = UIView(frame: CGRectMake(0, 0, 0, heightForLinearBar))
+        super.init(frame: CGRect(x: 0, y: 20, width: screenSize.width, height: 0))
+        self.progressBarIndicator = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: heightForLinearBar))
         
     }
     
     
     override public init(frame: CGRect) {
         super.init(frame: frame)
-        self.progressBarIndicator = UIView(frame: CGRectMake(0, 0, 0, heightForLinearBar))
+        self.progressBarIndicator = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: heightForLinearBar))
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -44,27 +44,27 @@ public class LinearProgressBar: UIView {
     }
     
     //MARK: LIFE OF VIEW
-    override public func layoutSubviews() {
+    override open func layoutSubviews() {
         super.layoutSubviews()
-        self.screenSize = UIScreen.mainScreen().bounds
+        self.screenSize = UIScreen.main.bounds
         
         if widthForLinearBar == 0 || widthForLinearBar == self.screenSize.height {
             widthForLinearBar = self.screenSize.width
         }
         
-        if (UIDeviceOrientationIsLandscape(UIDevice.currentDevice().orientation)) {
-            self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, widthForLinearBar, self.frame.height)
+        if (UIDeviceOrientationIsLandscape(UIDevice.current.orientation)) {
+            self.frame = CGRect(x: self.frame.origin.x, y: self.frame.origin.y, width: widthForLinearBar, height: self.frame.height)
         }
         
-        if (UIDeviceOrientationIsPortrait(UIDevice.currentDevice().orientation)) {
-            self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, widthForLinearBar, self.frame.height)
+        if (UIDeviceOrientationIsPortrait(UIDevice.current.orientation)) {
+            self.frame = CGRect(x: self.frame.origin.x, y: self.frame.origin.y, width: widthForLinearBar, height: self.frame.height)
         }
     }
     
     //MARK: PUBLIC FUNCTIONS    ------------------------------------------------------------------------------------------
     
     //Start the animation
-    public func startAnimation(){
+    open func startAnimation(){
         
         
         self.configureColors()
@@ -74,7 +74,7 @@ public class LinearProgressBar: UIView {
             
             self.isAnimationRunning = true
             
-            UIView.animateWithDuration(0.5, delay:0, options: [], animations: {
+            UIView.animate(withDuration: 0.5, delay:0, options: [], animations: {
                 
                 self.frame = CGRect(x: 0, y: self.frame.origin.y, width: self.widthForLinearBar, height: self.heightForLinearBar)
                 
@@ -89,11 +89,11 @@ public class LinearProgressBar: UIView {
     }
     
     //Start the animation
-    public func stopAnimation() {
+    open func stopAnimation() {
         
         self.isAnimationRunning = false
         
-        UIView.animateWithDuration(0.5, animations: {
+        UIView.animate(withDuration: 0.5, animations: {
             
             
             self.progressBarIndicator.frame = CGRect(x: 0, y: 0, width: self.widthForLinearBar, height: 0)
@@ -105,24 +105,24 @@ public class LinearProgressBar: UIView {
     
     //MARK: PRIVATE FUNCTIONS    ------------------------------------------------------------------------------------------
     
-    private func configureColors(){
+    fileprivate func configureColors(){
         
         self.backgroundColor = self.backgroundColor
         self.progressBarIndicator.backgroundColor = self.progressBarColor
     }
     
-    private func configureAnimation() {
+    fileprivate func configureAnimation() {
         
-        self.progressBarIndicator.frame = CGRectMake(0, 0, 0, heightForLinearBar)
+        self.progressBarIndicator.frame = CGRect(x: 0, y: 0, width: 0, height: heightForLinearBar)
         
-        UIView.animateWithDuration(0.5, delay:0, options: [], animations: {
+        UIView.animate(withDuration: 0.5, delay:0, options: [], animations: {
             
             
             self.progressBarIndicator.frame = CGRect(x: 0, y: 0, width: self.widthForLinearBar*0.7, height: self.heightForLinearBar)
             
             }, completion: nil)
         
-        UIView.animateWithDuration(0.4, delay:0.4, options: [], animations: {
+        UIView.animate(withDuration: 0.4, delay:0.4, options: [], animations: {
             
             self.progressBarIndicator.frame = CGRect(x: self.frame.width, y: 0, width: 0, height: self.heightForLinearBar)
             
